@@ -1,24 +1,26 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-body{
+
+body {
     display: flex;
     padding: 0 35px;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(to left top, #f2e1fc,#f8dbee, #def1ff);
+    background: linear-gradient(to left top, #f2e1fc, #f8dbee, #def1ff);
 }
-.contenedorSlide{
+
+.contenedorSlide {
     max-width: 1100px;
     width: 100%;
     position: relative;
 }
 
-.contenedorSlide i{
+.contenedorSlide i {
     top: 50%;
     height: 50px;
     width: 50px;
@@ -29,74 +31,127 @@ body{
     line-height: 50px;
     background: #fff;
     border-radius: 50%;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
     transform: translateY(-50%);
     transition: transform 0.1s linear;
 }
 
-.contenedorSlide i:first-child{
+.contenedorSlide i:active {
+    transform: translateY(-50%) scale(0.85);
+}
+
+.contenedorSlide i:first-child {
     left: -22px;
 }
-.contenedorSlide i:last-child{
+
+.contenedorSlide i:last-child {
     right: -22px;
 }
-.contenedorSlide .carousel{
+
+.contenedorSlide .carousel {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 5) - 12px);
+    grid-auto-columns: calc((100% / 5) - 15px);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 16px;
     border-radius: 8px;
     scroll-behavior: smooth;
-    scrollbar-width: none;    
-    overflow: hidden;
+    scrollbar-width: none;
 }
-.carousel :where(.cardContent, .imagenCarousel){
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .cardContent {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel :where(.cardContent, .imagenCarousel) {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.carousel .cardContent{
+
+.carousel .cardContent {
+    scroll-snap-align: start;
+    height: 342px;
     list-style: none;
-height: 342px;
-background-color: #fff;
-border-radius: 8px;
-display: flex;
-padding-bottom: 15px;
-align-items: center;
-justify-content: center;
-flex-direction: column;
+    background: #fff;
+    cursor: pointer;
+    padding-bottom: 15px;
+    flex-direction: column;
+    border-radius: 8px;
 }
-.carousel .cardContent .imagenCarousel{
-    background-color: #ffe9d5;
-    width:  144px;
-    height: 144px;
+
+.carousel .cardContent .imagenCarousel {
+    background-color: #ffd5e9;
+    width: 148px;
+    height: 148px;
 }
-.cardContent .imagenCarousel img{
-    width:  140px;
+
+.cardContent .imagenCarousel img {
+    width: 140px;
     height: 140px;
     object-fit: cover;
     border: 4px solid #fff;
 }
-.cardContent h2{
-font-weight: 500;
-font-size: 1.26rem;
-margin:30px 0 5px;
+
+.cardContent h2 {
+    font-weight: 500;
+    font-size: 1.26rem;
+    margin: 30px 0 5px;
 }
-.cardContent span{
+
+.cardContent span {
     color: #6a6d78;
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 900px) {
-    .contenedorSlide .carousel{
-        grid-auto-columns: calc((100% / 3) - 9px);
+.btnAdd{
+    margin-top: 10px;
+        width: 70%;
+        height: 30px;
+        background-color: #f7638f;
+        color: white;
+        border: none;
+        transition:  0.4s ease-in-out;
+    }
+.btnAdd:hover{
+    background-color: #f890bb;
+    color: white;
+}
+@media screen and (max-width: 950px) {
+    .contenedorSlide .carousel {
+        grid-auto-columns: calc((100% / 4) - 12px);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .contenedorSlide .carousel {
+        grid-auto-columns: calc((100% / 3) - 12px);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .contenedorSlide .carousel {
+        grid-auto-columns: calc((100% / 2) - 12px);
     }
 }
 
 @media screen and (max-width: 500px) {
-    .contenedorSlide .carousel{
+    .contenedorSlide .carousel {
         grid-auto-columns: 100%
     }
 }

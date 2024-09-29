@@ -1,0 +1,47 @@
+.card{
+    border: none;
+    border-radius: 0;
+    box-shadow: 2px 6px 8px 0 rgba(22,22, 26, 
+    .18);
+}
+.carousel-inner{
+    padding: 1em;
+}
+.carousel-control-prev, .carousel-control-next{
+    max-width: 40px;
+    height: 40px;
+    background-color: #929292;
+    margin: auto;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+@media screen and (min-width: 568px) {
+    .cards-wrapper {
+        display: flex;
+    }
+
+    .card {
+        margin: 0 .5em;
+        width: calc((100% / 3) -12px);
+    }
+
+    .image-wrapper {
+        height: 22vw;
+        margin: 0 auto;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    .card:not(:first-child) {
+        display: none;
+    }
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
